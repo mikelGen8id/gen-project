@@ -1,0 +1,83 @@
+{
+  "name": "@idos-network/idos-sdk",
+  "description": "idOS JavaScript SDK",
+  "version": "0.2.15",
+  "homepage": "https://idos.network",
+  "repository": "https://github.com/idos-network/idos-sdk-js",
+  "license": "MIT",
+  "type": "module",
+  "main": "dist/idos-sdk.js",
+  "module": "dist/idos-sdk.umd.cjs",
+  "types": "dist/idos-sdk.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/idos-sdk.js",
+      "require": "./dist/idos-sdk.umd.cjs",
+      "types": "./dist/idos-sdk.d.ts"
+    }
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "lint": "biome check --apply ./src",
+    "format": "biome format --write .",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:watch": "vitest",
+    "release-it": "release-it",
+    "prepack": "clean-package",
+    "postpack": "clean-package restore"
+  },
+  "peerDependencies": {
+    "ethers": "^6.8.0",
+    "near-api-js": "^3.0.4"
+  },
+  "devDependencies": {
+    "@near-wallet-selector/core": "^8.7.5",
+    "@release-it/keep-a-changelog": "^5.0.0",
+    "@vitest/ui": "^0.34.6",
+    "clean-package": "^2.2.0",
+    "eslint": "^8.52.0",
+    "jsdom": "^22.1.0",
+    "prettier": "^3.0.3",
+    "release-it": "^17.0.0",
+    "typescript": "^5.2.2",
+    "vite": "^4.5.0",
+    "vite-plugin-dts": "^3.6.3",
+    "vite-plugin-externalize-deps": "^0.8.0",
+    "vitest": "^0.31.4"
+  },
+  "dependencies": {
+    "@digitalbazaar/ed25519-signature-2020": "^5.2.0",
+    "@digitalbazaar/ed25519-verification-key-2020": "^4.1.0",
+    "@digitalbazaar/vc": "^6.0.2",
+    "@kwilteam/kwil-js": "0.5.10",
+    "@stablelib/base64": "^1.0.1",
+    "@stablelib/binary": "^1.0.1",
+    "@stablelib/bytes": "^1.0.1",
+    "@stablelib/sha256": "^1.0.1",
+    "@stablelib/utf8": "^1.0.1",
+    "borsh": "^1.0.0",
+    "jsonld": "^8.3.1",
+    "jsonld-document-loader": "^2.0.0",
+    "tweetnacl": "^1.0.3"
+  },
+  "clean-package": {
+    "replace": {
+      "main": "dist/idos-sdk.js",
+      "module": "dist/idos-sdk.umd.cjs",
+      "types": "dist/idos-sdk.d.ts",
+      "exports": {
+        ".": {
+          "types": "./dist/idos-sdk.d.ts",
+          "import": "./dist/idos-sdk.js",
+          "require": "./dist/idos-sdk.umd.cjs"
+        },
+        "./package.json": "./package.json"
+      }
+    }
+  }
+}
